@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Neutral, cool-tinted greys with a single iris accent. Colors are
+   RGB triplets so Tailwind opacity modifiers keep working.
+------------------------------------------------------------------- */
+:root {
+  --canvas: 245 246 249;
+  --surface: 255 255 255;
+  --surface-2: 249 250 252;
+  --sunken: 240 242 246;
+  --line: 229 232 238;
+  --line-strong: 209 214 224;
+
+  --ink: 16 20 30;
+  --ink-2: 74 83 100;
+  --ink-3: 105 114 131;
+
+  --accent: 91 79 233;
+  --accent-soft: 240 238 255;
+  --accent-strong: 70 58 204;
+  --accent-fg: 255 255 255;
+
+  --success: 18 138 84;
+  --success-soft: 230 246 238;
+  --warning: 176 108 6;
+  --warning-soft: 255 245 225;
+  --danger: 200 48 56;
+  --danger-soft: 254 236 237;
+  --info: 30 111 200;
+  --info-soft: 231 241 253;
+
+  /* chart palette: iris, azure, teal, amber, rose */
+  --c1: #5b4fe9;
+  --c2: #2f9bea;
+  --c3: #17aa93;
+  --c4: #eea02c;
+  --c5: #dc5a86;
+  --c-muted: #c9cfdb;
+  --grid: rgb(229 232 238);
+
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 0 0 0.5px rgb(16 24 40 / 0.02);
+  --shadow-lift: 0 8px 24px -10px rgb(16 24 40 / 0.16), 0 2px 4px rgb(16 24 40 / 0.04);
+  --shadow-pop: 0 18px 48px -12px rgb(16 24 40 / 0.28), 0 4px 10px rgb(16 24 40 / 0.06);
+}
+
+.dark {
+  --canvas: 10 14 22;
+  --surface: 17 22 34;
+  --surface-2: 21 27 41;
+  --sunken: 27 34 50;
+  --line: 33 41 58;
+  --line-strong: 52 62 84;
+
+  --ink: 236 239 245;
+  --ink-2: 162 170 187;
+  --ink-3: 126 135 154;
+
+  --accent: 128 116 255;
+  --accent-soft: 34 32 78;
+  --accent-strong: 176 169 255;
+  --accent-fg: 12 10 40;
+
+  --success: 62 204 138;
+  --success-soft: 16 46 36;
+  --warning: 244 176 60;
+  --warning-soft: 54 42 16;
+  --danger: 255 113 118;
+  --danger-soft: 58 25 30;
+  --info: 100 168 250;
+  --info-soft: 20 37 62;
+
+  --c1: #8e83ff;
+  --c2: #56b5f5;
+  --c3: #2fcdb2;
+  --c4: #f5b95a;
+  --c5: #f27fa4;
+  --c-muted: #3a455c;
+  --grid: rgb(33 41 58);
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), inset 0 1px 0 rgb(255 255 255 / 0.03);
+  --shadow-lift: 0 10px 28px -10px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.04);
+  --shadow-pop: 0 24px 56px -12px rgb(0 0 0 / 0.75), 0 0 0 1px rgb(255 255 255 / 0.04);
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-canvas font-sans text-sm text-ink antialiased;
+    font-feature-settings: 'tnum' 0;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink;
+  }
+  ::selection {
+    background: rgb(var(--accent) / 0.22);
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border border-line bg-surface shadow-card;
+  }
+  .control {
+    @apply h-9 w-full rounded-control border border-line bg-surface px-3 text-sm text-ink transition-[border-color,box-shadow] duration-150 placeholder:text-ink-3 hover:border-line-strong focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:bg-sunken disabled:text-ink-3;
+  }
+  .control[aria-invalid='true'] {
+    @apply border-danger focus:ring-danger/25;
+  }
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .page-title {
+    @apply font-display text-[32px] font-normal leading-[1.1] tracking-[-0.01em] text-ink sm:text-[36px];
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-sunken;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(90deg, transparent, rgb(var(--surface) / 0.65), transparent);
+  }
+}
+
+@layer utilities {
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line-strong)) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: rgb(var(--line-strong));
+    border-radius: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Recharts polish */
+.recharts-wrapper,
+.recharts-surface {
+  outline: none;
+}
+.recharts-cartesian-grid line {
+  stroke: var(--grid);
+}
+.recharts-text {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth color crossfade only while the theme is being switched */
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    fill 0.25s ease,
+    stroke 0.25s ease !important;
+}

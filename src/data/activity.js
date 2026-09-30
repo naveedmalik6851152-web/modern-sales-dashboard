@@ -1,0 +1,51 @@
+export const activity = [
+  {
+    id: 'a1',
+    type: 'customer',
+    title: 'New customer registered',
+    detail: 'Zoe Adams from Portland, US',
+    minutesAgo: 3,
+  },
+  {
+    id: 'a2',
+    type: 'order',
+    title: 'Order #ORD-4582 completed',
+    detail: 'Nimbus Mechanical Keyboard and 1 more item',
+    minutesAgo: 14,
+  },
+  {
+    id: 'a3',
+    type: 'payment',
+    title: 'Payment received',
+    detail: '$2,940.00 from Brightwave',
+    minutesAgo: 38,
+  },
+  {
+    id: 'a4',
+    type: 'inventory',
+    title: 'Product inventory updated',
+    detail: 'Prism Light Strip is down to 12 units',
+    minutesAgo: 71,
+  },
+  {
+    id: 'a5',
+    type: 'support',
+    title: 'New support ticket created',
+    detail: '#SUP-2291 · Refund request for ORD-4551',
+    minutesAgo: 126,
+  },
+  {
+    id: 'a6',
+    type: 'order',
+    title: 'Order #ORD-4577 shipped',
+    detail: 'Tracking sent to Hannah Müller',
+    minutesAgo: 205,
+  },
+  {
+    id: 'a7',
+    type: 'payment',
+    title: 'Payout scheduled',
+    detail: '$18,420.00 arriving Friday',
+    minutesAgo: 340,
+  },
+];

@@ -1,0 +1,40 @@
+export const currentUser = {
+  id: 'USR-001',
+  name: 'Naveed Ahmed',
+  firstName: 'Naveed',
+  lastName: 'Ahmed',
+  email: 'naveed@meridian.io',
+  role: 'Head of Growth',
+  company: 'Meridian Commerce',
+  phone: '+971 50 555 0142',
+  location: 'Dubai, United Arab Emirates',
+  timezone: 'GMT+4',
+  bio: 'Leads growth and analytics for a portfolio of direct-to-consumer brands. Cares about clear numbers and fast decisions.',
+  joinedAt: '2023-02-14',
+  avatarColorIndex: 1,
+  avatarImage: null,
+  stats: [
+    { label: 'Orders handled', value: '2,486' },
+    { label: 'Reports generated', value: '148' },
+    { label: 'Avg. response time', value: '14 min' },
+    { label: 'Team members', value: '12' },
+  ],
+  weeklyActivity: [
+    { day: 'Mon', actions: 38 },
+    { day: 'Tue', actions: 52 },
+    { day: 'Wed', actions: 47 },
+    { day: 'Thu', actions: 63 },
+    { day: 'Fri', actions: 41 },
+    { day: 'Sat', actions: 12 },
+    { day: 'Sun', actions: 8 },
+  ],
+  recentActivity: [
+    { id: 1, text: 'Exported the Q3 revenue report', minutesAgo: 22 },
+    { id: 2, text: 'Refunded order ORD-4551 for Ethan Brown', minutesAgo: 95 },
+    { id: 3, text: 'Added Tariq Hussain as a customer', minutesAgo: 60 * 5 },
+    { id: 4, text: 'Updated stock for Prism Light Strip', minutesAgo: 60 * 26 },
+    { id: 5, text: 'Connected the Stripe integration', minutesAgo: 60 * 24 * 3 },
+  ],
+};
+
+export const teamMembers = ['Priya Sharma', 'Marcus Bell', 'Sofia Rossi', 'Daniel Lee'];
